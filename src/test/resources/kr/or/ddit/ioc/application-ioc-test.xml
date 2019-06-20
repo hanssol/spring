@@ -18,6 +18,7 @@
 		<!-- boardService의 filed, property-->
 		<!-- setter injection -->
 		<property name="boardDao" ref="boardDao"/>
+		<property name="name" value="brown"/>
 		
 	</bean>
 	
