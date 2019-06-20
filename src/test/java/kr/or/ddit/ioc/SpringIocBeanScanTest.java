@@ -29,7 +29,13 @@ public class SpringIocBeanScanTest {
 	@Resource(name="boardService")
 	private BoardService boardService;
 	
-	
+	/**
+	 * 
+	 * Method : springBeanScanTest
+	 * 작성자 : PC03
+	 * 변경이력 :
+	 * Method 설명 : springBeanScan 테스트
+	 */
 	@Test
 	public void springBeanScanTest() {
 		/***Given***/
