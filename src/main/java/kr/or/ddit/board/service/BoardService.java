@@ -1,10 +1,17 @@
 package kr.or.ddit.board.service;
 
-import kr.or.ddit.board.dao.IBoardDao;
+import javax.annotation.Resource;
 
+import org.springframework.stereotype.Service;
+
+import kr.or.ddit.board.dao.IBoardDao;
+@Service
 public class BoardService implements IBoardService{
 	
+	//property or filed
+	@Resource(name="boardDao")
 	private IBoardDao boardDao;
+	
 	private String name;
 	
 	public String getName() {
