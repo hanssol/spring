@@ -13,12 +13,12 @@ import kr.or.ddit.ioc.placeholder.DbInfo;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:kr/or/ddit/ioc/application-ioc-placeholder.xml")
-public class SpringplaceHolderTest {
+public class SpringLifeCycleTest {
 	@Resource(name="dbInfo")
 	private DbInfo dbInfo;
 	
 	@Test
-	public void lifeCycleTest() {
+	public void placeHolderTest() {
 		/***Given***/
 		
 
