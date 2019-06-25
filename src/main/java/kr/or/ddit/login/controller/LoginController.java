@@ -52,7 +52,7 @@ public class LoginController {
 		String encryptPassword = KISA_SHA256.encrypt(password);
 		UserVo userVo = userService.getUser(userId);
 		
-		if(userVo !=null && password.equals(userVo.getPass())) {
+		if(userVo !=null && encryptPassword.equals(userVo.getPass())) {
 			rememberMeCookie(userId, rememberme, response);
 			
 			session.setAttribute("USER_INFO", userVo);

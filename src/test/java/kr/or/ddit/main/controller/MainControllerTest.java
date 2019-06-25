@@ -9,6 +9,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -32,6 +34,7 @@ import kr.or.ddit.testenv.ControllerTestEnv;
 // applicationContext --> 웹 환경의 applicationContext 생성
 @WebAppConfiguration
 public class MainControllerTest extends ControllerTestEnv{
+	private static final Logger logger = LoggerFactory.getLogger(MainControllerTest.class);
 
 	/**
 	 * Method : mainViewTest
@@ -54,6 +57,8 @@ public class MainControllerTest extends ControllerTestEnv{
 		/***Then***/
 		assertEquals("main", viewName);
 		assertEquals("brown", userId);
+		assertNotNull(mav.getModel().get("rangers"));
+		assertNotNull(mav.getModel().get("userVo"));
 	}
 	
 	
@@ -66,9 +71,82 @@ public class MainControllerTest extends ControllerTestEnv{
 		mockMvc.perform(get("/main"))
 			   .andExpect(status().isOk())
 			   .andExpect(view().name("main"))
-			   .andExpect(model().attribute("mainUserId", "brown"));
-		
+			   .andExpect(model().attribute("mainUserId", "brown"))
+			   .andExpect(model().attributeExists("rangers"))
+			   .andExpect(model().attributeExists("userVo"));
 		/***Then***/
+	}
+	
+	/**
+	 * Method : mainViewMavTest
+	 * 작성자 : PC03
+	 * 변경이력 :
+	 * Method 설명 : ModelAndView 객체를 이용한 main페이지 요청 테스트
+	 * @throws Exception 
+	 */
+	@Test
+	public void mainViewMavTest() throws Exception {
+		/***Given***/
+		/***When***/
+		MvcResult mvcResult = mockMvc.perform(get("/mainMav")).andReturn();
+		ModelAndView mav = mvcResult.getModelAndView();
+
+		/***Then***/
+		// viewName이 기대하는 문자열로 리턴 되는지
+		assertEquals("main", mav.getViewName());
+		
+		// model객체에 controller에서 설정한 속성이 있는지
+		assertEquals("brown", mav.getModel().get("mainUserId"));
+		assertNotNull(mav.getModel().get("rangers"));
+		
+	}
+	
+	/**
+	 * Method : pathvariableTest
+	 * 작성자 : PC03
+	 * 변경이력 :
+	 * Method 설명 : @Pathvariable 테스트
+	 * @throws Exception 
+	 */
+	@Test
+	public void pathvariableTest() throws Exception {
+	
+		mockMvc.perform(get("/main/pathvariable/brown")) 
+				.andExpect(status().is(200))
+				.andExpect(view().name("main"));
+	
+	}
+	
+	/**
+	 * Method : pathvariableTest
+	 * 작성자 : PC03
+	 * 변경이력 :
+	 * Method 설명 : @Pathvariable 테스트
+	 * @throws Exception 
+	 */
+	@Test
+	public void pathvariableTest2() throws Exception {
+		
+		mockMvc.perform(get("/main/pathvariable/sally")) 
+				.andExpect(status().is(200))
+				.andExpect(view().name("main"));
+		
+	}
+	
+	/**
+	 * Method : requestHeaderTest
+	 * 작성자 : PC03
+	 * 변경이력 :
+	 * @throws Exception
+	 * Method 설명 : @Requestheader test
+	 */
+	@Test
+	public void requestHeaderTest() throws Exception {
+		
+		mockMvc.perform(get("/main/header").accept("text/html")) 
+				.andExpect(status().is(200))
+				.andExpect(view().name("main"));
+		
 	}
 
 }
