@@ -116,12 +116,19 @@ public class UserVo {
 	public void setalias(String alias) {
 		this.alias = alias;
 	}
-	
+
 	@Override
 	public String toString() {
-		return "UserVo [name=" + name + ", userId=" + userId + ", alias="
-				+ alias + "]";
+		return "UserVo [name=" + name + ", userId=" + userId + ", alias=" + alias + ", pass=" + pass + ", addr1="
+				+ addr1 + ", addr2=" + addr2 + ", zipcd=" + zipcd + ", birth=" + birth + ", path=" + path
+				+ ", filename=" + filename + "]";
 	}
+	
+//	@Override
+//	public String toString() {
+//		return "UserVo [name=" + name + ", userId=" + userId + ", alias="
+//				+ alias + "]";
+//	}
 
 	
 	
