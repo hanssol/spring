@@ -83,5 +83,16 @@ public class UserServiceTest extends LogicTestEnv{
 		logger.debug("deleteCnt : {}", deleteCnt);
 		assertEquals(1, deleteCnt);
 	}
+	
+	@Test
+	public void getUserTest() {
+		/***Given***/
+		String userId="brown";
+
+		/***When***/
+		UserVo userVo = userService.getUser(userId);
+		/***Then***/
+		assertEquals("브라운", userVo.getName());
+	}
 
 }

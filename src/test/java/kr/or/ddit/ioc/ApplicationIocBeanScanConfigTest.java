@@ -45,8 +45,9 @@ public class ApplicationIocBeanScanConfigTest {
 		String msg = boardDao.sayHello();
 		
 		/***Then***/
+		assertNotNull(boardDao);
 		assertEquals("boardDao sayHello", msg);
-		
+		assertEquals(boardDao, boardService.getBoardDao());
 	}
 
 }

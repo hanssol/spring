@@ -15,11 +15,11 @@ import kr.or.ddit.board.service.IBoardService;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:kr/or/ddit/ioc/application-ioc-st.xml")
 public class SpringIocStTest {
-	@Resource(name="bDao")
+	@Resource(name="boardDao")
 	private IBoardDao boardDao;
 	
 	
-	@Resource(name = "bService")
+	@Resource(name = "boardService")
 	private IBoardService boardService;
 	
 	

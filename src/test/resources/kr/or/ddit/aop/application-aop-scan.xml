@@ -11,7 +11,13 @@
 	<!-- @Controller,@service,@Respository,@Component 4가지 이노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
 	<context:component-scan base-package="kr.or.ddit">
 		<context:include-filter type="annotation" expression="org.aspectj.lang.annotation.Aspect"/>
+		<context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
 	</context:component-scan>
+	
+	<bean id="boardService" class="kr.or.ddit.board.service.BoardService"/>
+	<bean id="boardDao" class="kr.or.ddit.board.dao.BoardDao"/>
+	<bean id="profilingAspect" class="kr.or.ddit.aop.ProfilingAspect"/>	
+		
 	
 	<aop:aspectj-autoproxy/>
 	

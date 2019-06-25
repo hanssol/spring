@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Configuration;
 // useDefaultFilter를 false로 선언하면 개발자가 원하는 이노테이션만 스캔 가능
 // ex : @Controller만 스캔
 @Configuration
-@ComponentScan(basePackages = {"kr.or.ddit"})
+@ComponentScan(basePackages = {"kr.or.ddit.board"}, useDefaultFilters = true)
 public class ApplicationIocBeanScanConfig {
 
 

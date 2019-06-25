@@ -14,7 +14,7 @@
 	<bean id="profilingAspect" class="kr.or.ddit.aop.ProfilingAspect"/>
 	
 	<!-- @Controller,@service,@Respository,@Component 4가지 이노테이션이 붙은 클래스를 스프링 빈으로 등록 -->
-	<context:component-scan base-package="kr.or.ddit"/>
+	<context:component-scan base-package="kr.or.ddit.board"/>
 		
 	<context:annotation-config/>
 	
@@ -30,8 +30,8 @@
 		<!-- execution : 접근제어자(생략이가능. spring public) [public 명시] 또는 [생략]
 						 반환 타입 - 패키지 - 클래스 - 메소드 - 메소드 인자
 		 -->
-<!-- 		<aop:pointcut id="target" expression="execution(* kr.or.ddit..service.*.*(..))"/> -->
-		<aop:pointcut id="target" expression="within(kr.or.ddit..service.*)"/>
+		<aop:pointcut id="target" expression="execution(* kr.or.ddit..service.*.*(..))"/>
+<!-- 		<aop:pointcut id="target" expression="within(kr.or.ddit..service.*)"/> -->
 		<aop:aspect ref="logginAspect">
 			<aop:before pointcut-ref="target" method="before"/>
 			<aop:after pointcut-ref="target" method="after"/>
