@@ -51,7 +51,7 @@
   
   <!-- 사용자정보 수정 -->
   <update id="updateUser" parameterType="userVo">
-  	update users set NAME=#{name},ALIAS=#{alias},PASS=#{pass},ADDR1=#{addr1},ADDR2=#{addr2},ZIPCD=#{zipcd},BIRTH=#{birth}, PATH=#{path, jdbcType=VARCHAR}, FILENAME=#{filename, jdbcType=VARCHAR} where USERID =#{userId}
+  	update users set NAME=#{name},ALIAS=#{alias},ADDR1=#{addr1},ADDR2=#{addr2},ZIPCD=#{zipcd},BIRTH=#{birth}, PATH=#{path, jdbcType=VARCHAR}, FILENAME=#{filename, jdbcType=VARCHAR} where USERID =#{userId}
   </update>
   
   <!-- 사용자 비밀번호 암호화 적용 대상 조회 -->

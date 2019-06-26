@@ -35,15 +35,14 @@
 					<div class="col-sm-8 blog-main">
 						<h2 class="sub-header">사용자상세</h2>
 						
-						<form class="form-horizontal" role="form" action="${cp }/userModify"
-							  method="get">
+						<form class="form-horizontal" role="form" action="${cp }/user/modify" method="get">
 								<input type="hidden" id="userId" name="userId" value="${userInfo.userId}"/>
 						
 						<div class="form-group">
 								<label for="userNm" class="col-sm-2 control-label">사용자 사진</label>
 								<div class="col-sm-10">
 								
-									<img src="${cp }/profile?userId=${userInfo.userId}"/>
+									<img src="${cp }/user/profile?userId=${userInfo.userId}"/>
 								</div>
 							</div>
 						
