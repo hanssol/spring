@@ -154,8 +154,10 @@ $(document).ready(function(){
 									
 									</c:otherwise>
 								</c:choose>
-														
 							</ul>
+							
+							<a class="btn btn-default pull-right" href="http://localhost/user/userListExcel?filename=userList"> 엑셀다운로드</a>
+							
 						</div>
 						
 					</div>

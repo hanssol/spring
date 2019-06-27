@@ -20,6 +20,16 @@
 <!-- css,js -->
 <%@include file="/WEB-INF/views/common/basicLib.jsp" %>
 
+<script>
+
+	$(document).ready(function(){
+		var msg = '${msg}';
+		if(msg != '')
+			alert(msg);
+		
+	});
+			
+</script>
 </head>
 <body>
 	<!-- header -->
