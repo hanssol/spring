@@ -113,7 +113,7 @@ public class UserController {
 		model.addAttribute("pageVo", pageVo);
 		
 		
-		return "user/userPageList";
+		return "tiles.userPagingList";
 	}
 	
 	/**
