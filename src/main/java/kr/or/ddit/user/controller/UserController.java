@@ -40,7 +40,6 @@ import kr.or.ddit.util.PartUtil;
 public class UserController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(UserController.class);
-
 	
 	@Resource(name="userService")
 	private IUserService userService;
@@ -69,7 +68,6 @@ public class UserController {
 		model.addAttribute("filename", filename);
 		model.addAttribute("data", userList);
 		
-		
 		header.add("userId");
 		header.add("name");
 		header.add("alias");
@@ -82,8 +80,6 @@ public class UserController {
 		
 		return "userExcelView";
 	}
-	
-	
 	
 	/**
 	 * Method : userPagingList
@@ -99,10 +95,8 @@ public class UserController {
 //	PageVo pageVo = new PageVo(page,pageSize);
 	@RequestMapping("/pagingList")
 	public String userPagingList(PageVo pageVo,	Model model) {
-	
 		
 		logger.debug("page : {}", pageVo);
-		
 		
 		Map<String, Object> resultMap = userService.userPagingList(pageVo);
 		
@@ -115,6 +109,41 @@ public class UserController {
 		
 		return "tiles.userPagingList";
 	}
+	
+	/**
+	 * Method : pagingListAjax
+	 * 작성자 : PC03
+	 * 변경이력 :
+	 * @param pageVo
+	 * @param model
+	 * @return
+	 * Method 설명 : 사용자 페에징리스트 ajax처리
+	 */
+	@RequestMapping("/pagingListAjax")
+	public String pagingListAjax(PageVo pageVo, Model model) {
+		
+		model.addAttribute("data", userService.userPagingList(pageVo));
+		
+		
+		return "jsonView";
+	}
+	
+	@RequestMapping("/pagingListAjaxHtml")
+	public String pagingListAjaxHtml(PageVo pageVo, Model model) {
+		
+		model.addAttribute("data", userService.userPagingList(pageVo));
+		
+		
+		return "user/userPageListAjaxHtml";
+	}
+	
+	@RequestMapping("/pagingListAjaxView")
+	public String pagingListAjaxView() {
+		
+		return "tiles.pagingListAjaxView";
+	}
+	
+	
 	
 	/**
 	 * Method : user

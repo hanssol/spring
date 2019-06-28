@@ -71,7 +71,6 @@ $(document).ready(function(){
 						<div class="text-center">
 							<ul class="pagination">
 							
-							
 							<%
 								// 내가 현제 몇번째 페이지에 있는가?
 								PageVo pageVo = (PageVo)request.getAttribute("pageVo");
@@ -99,24 +98,7 @@ $(document).ready(function(){
 									</c:choose>
 
 								</c:forEach>
-								
-								<%-- 
-								<c:forEach begin="1" end="${paginationSize }" step="1" var="i">
-									<c:choose>
-										<li
-											<c:when test="${pageVo.page == i }">
-									class="active"
-									</c:when>>
-											<c:when test="${pageVo.page == i}">
-												<span> i </span>
-											</c:when> <c:otherwise>
-												<a
-													href="${cp}/userPagingList?page=${i }>&pageSize=${pageVo.pageSize}">${i }</a>
-											</c:otherwise>
-										</li>
-									</c:choose>
-								</c:forEach>
-								--%>
+							
 
 								<c:choose>
 									<c:when test="${pageVo.page == paginationSize}">
