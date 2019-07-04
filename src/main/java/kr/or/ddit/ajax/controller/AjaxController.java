@@ -9,7 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.ddit.paging.model.PageVo;
 import kr.or.ddit.user.model.UserVo;
@@ -50,6 +53,13 @@ public class AjaxController {
 		return "jsonView";
 	}
 	
+	@RequestMapping("/requestDataResponseBody")
+	@ResponseBody // 응답내용을 responseBody에다가 작성
+	public PageVo requestDataResponseBody() {
+		return new PageVo(5,10);
+	}
+	
+	
 	@RequestMapping("/user")
 	public String user(String userId, Model model) {
 		UserVo userVo = userService.getUser(userId);
@@ -62,6 +72,18 @@ public class AjaxController {
 		UserVo userVo = userService.getUser(userId);
 		model.addAttribute("userVo", userVo);	
 		return "user/userHtml";
+	}
+	
+	@RequestMapping(path="/requestBody",/*method = {RequestMethod.POST},*/
+					consumes = {"application/json"},					// consumes : content-type 제한
+					produces = {"application/json","application/xml"})	// produces :  메소드가 생성가능한 타입(accept헤더를 보고 판단) 
+	@ResponseBody
+	public UserVo requestBody(@RequestBody UserVo userVo) {
+		logger.debug("userVo : {}",userVo);
+		userVo.setUserId(userVo.getUserId() + "_MODIFY");
+		userVo.setPass(userVo.getPass() + "_MODIFY");
+		
+		return userVo;
 	}
 	
 }
