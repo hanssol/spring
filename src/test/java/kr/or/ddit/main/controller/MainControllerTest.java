@@ -25,11 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ch.qos.logback.core.status.Status;
 import kr.or.ddit.testenv.ControllerTestEnv;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration({"classpath:kr/or/ddit/config/spring/application-context.xml"
-						,"classpath:kr/or/ddit/config/spring/root-context.xml"
-					  	,"classpath:kr/or/ddit/config/spring/application-datasource-dev.xml"
-						,"classpath:kr/or/ddit/config/spring/application-transaction.xml"})
+
 // 일반 자바 환경 -> 웹 환경
 // applicationContext --> 웹 환경의 applicationContext 생성
 @WebAppConfiguration

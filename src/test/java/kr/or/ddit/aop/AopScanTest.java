@@ -13,9 +13,9 @@ import kr.or.ddit.board.dao.IBoardDao;
 import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.testenv.LogicTestEnv;
 
-//@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:kr/or/ddit/aop/application-aop-scan.xml")
-public class AopScanTest extends LogicTestEnv{
+public class AopScanTest {
 	
 	@Resource(name="boardService")
 	private IBoardService boardService;

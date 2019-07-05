@@ -14,9 +14,9 @@ import org.springframework.core.io.ClassPathResource;
 
 
 @Configuration
-@PropertySource("classpath:kr/or/ddit/config/mybatis/db.properties")
+@PropertySource("classpath:kr/or/ddit/config/mybatis/db_dev.properties")
 
-public class ApplicationDatasource {
+public class ApplicationDatasource_dev {
 
 	@Autowired
 	private  Environment env;
