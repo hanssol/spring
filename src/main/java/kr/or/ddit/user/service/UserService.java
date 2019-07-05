@@ -8,11 +8,13 @@ import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.ddit.paging.model.PageVo;
 import kr.or.ddit.user.dao.IUserDao;
 import kr.or.ddit.user.model.UserVo;
 
+@Transactional
 @Service
 public class UserService implements IUserService{
 	
